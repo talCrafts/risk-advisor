@@ -2,8 +2,17 @@ package com.talcrafts.core.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
+
+import org.joda.time.DateTime;
+
+import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Option;
+import com.talcrafts.RISK_CATEGORY;
 
 public class Product {
+
+	private static final String CARRIER = "Carrier";
+	private static final String PRODUCT_FIRST_AVAILABLE_IN = "Product First Available:";
 
 	private String code;
 	private String name;
@@ -14,13 +23,14 @@ public class Product {
 	private BigDecimal maxCoverage;
 	private BigDecimal claimSettlementrating;
 	private String risk;
-	private boolean cashValue;
+	private int cashValue = 0;
 	private Date productLaunchDate;
 	private int minTenureYears;
 	private int maxTenureYears;
 	private boolean smoker;
 	private String benefits;
 	private String riders;
+	private String descriptionHtml;
 
 	private String findRisk(Double mortalityRiskFactor) {
 		if (mortalityRiskFactor <= 20) {
@@ -114,11 +124,11 @@ public class Product {
 		this.risk = findRisk(mortalityRiskFactor);
 	}
 
-	public boolean isCashValue() {
+	public int getCashValue() {
 		return cashValue;
 	}
 
-	public void setCashValue(boolean cashValue) {
+	public void setCashValue(int cashValue) {
 		this.cashValue = cashValue;
 	}
 
@@ -168,6 +178,31 @@ public class Product {
 
 	public void setRiders(String riders) {
 		this.riders = riders;
+	}
+
+	public String getDescriptionHtml() {
+		return descriptionHtml;
+	}
+
+	public void setDescriptionHtml(String descriptionHtml) {
+		this.descriptionHtml = descriptionHtml;
+	}
+
+	public Option toOption() {
+		Option option = new Option();
+		option.setKey(getCode());
+		option.setName(getName());
+		option.setDescriptionHtml(getDescriptionHtml());
+		HashMap<String, Object> values = new HashMap<>();
+		values.put(RISK_CATEGORY.PREMIUM, getPremiumPerUnit());
+		values.put(RISK_CATEGORY.COVERAGE, getMaxCoverage());
+		values.put(RISK_CATEGORY.MAXIMUM_TERM, getMaxTenureYears());
+		values.put(RISK_CATEGORY.CLAIM_SETTLEMENT_RATIO, getClaimSettlementrating());
+		values.put(RISK_CATEGORY.CASH_VALUE, getCashValue());
+		values.put(CARRIER, getCarrierName());
+		values.put(PRODUCT_FIRST_AVAILABLE_IN, new DateTime(getProductLaunchDate()).getYear());
+		option.setValues(values);
+		return option;
 	}
 
 }
