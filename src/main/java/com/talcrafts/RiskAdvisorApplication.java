@@ -26,10 +26,5 @@ public class RiskAdvisorApplication {
 		return new ServletRegistrationBean(new ProductsRecommendationServlet(), "/problem/*");
 	}
 
-	@Bean
-	public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet) {
-		ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet);
-		registration.addUrlMappings("/api/*");
-		return registration;
-	}
+
 }
