@@ -1,17 +1,14 @@
 package com.talcrafts.core.util;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.StringWriter;
-import java.util.List;
-
-import org.apache.commons.io.IOUtils;
-import org.springframework.boot.json.BasicJsonParser;
+import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 
 public final class JsonHelper {
 
@@ -25,11 +22,11 @@ public final class JsonHelper {
 		return stringWriter.toString();
 	}
 
-	public static List<Object> stringToJson(String jsonPath) throws Exception {
-		BasicJsonParser basicJsonParser = new BasicJsonParser();
-		InputStream inputStream = JsonHelper.class.getResourceAsStream(jsonPath);
-		String jsonString = IOUtils.toString(inputStream);
-		return basicJsonParser.parseList(jsonString);
+	public static <T> java.util.List<T> jsonArrayStringToJson(String jsonArrayString, Class<T> classType)
+			throws IOException {
+		final CollectionType javaType = objectMapper.getTypeFactory().constructCollectionType(Collection.class,
+				classType);
+		return objectMapper.readValue(jsonArrayString, javaType);
 	}
 
 }

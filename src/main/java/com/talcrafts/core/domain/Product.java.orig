@@ -1,31 +1,39 @@
 package com.talcrafts.core.domain;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.joda.time.DateTime;
+
 import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Option;
 import com.talcrafts.RISK_CATEGORY;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
-	private static final String CARRIER = "Carrier";
+<<<<<<< HEAD
 
+	private static final String CARRIER = "Carrier";
+	private static final String PRODUCT_FIRST_AVAILABLE_IN = "Product First Available:";
+
+=======
+>>>>>>> branch 'master' of https://github.com/talCrafts/risk-advisor.git
 	private String code;
 	private String name;
 	private String carrierName;
-	private String premiumPerUnit;
-	private String minCoverage;
-	private String maxCoverage;
-	private String claimSettlementrating;
+	private BigDecimal premiumPerUnit;
+	private Integer unit;
+	private BigDecimal minCoverage;
+	private BigDecimal maxCoverage;
+	private BigDecimal claimSettlementrating;
 	private String risk;
 	private int cashValue = 0;
-	private String minTenureYears;
-	private String maxTenureYears;
-	private String smoker;
+	private Date productLaunchDate;
+	private int minTenureYears;
+	private int maxTenureYears;
+	private boolean smoker;
 	private String benefits;
 	private String riders;
 	private String descriptionHtml;
-	private String maxAge;
 
 	public String findRisk(Double mortalityRiskFactor) {
 		if (mortalityRiskFactor <= 20) {
@@ -35,10 +43,6 @@ public class Product {
 		} else {
 			return "High";
 		}
-	}
-
-	public Product() {
-
 	}
 
 	public Product(String code, String name, String carrierName) {
@@ -71,35 +75,43 @@ public class Product {
 		this.carrierName = carrierName;
 	}
 
-	public String getPremiumPerUnit() {
+	public BigDecimal getPremiumPerUnit() {
 		return premiumPerUnit;
 	}
 
-	public void setPremiumPerUnit(String premiumPerUnit) {
+	public void setPremiumPerUnit(BigDecimal premiumPerUnit) {
 		this.premiumPerUnit = premiumPerUnit;
 	}
 
-	public String getMinCoverage() {
+	public Integer getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Integer unit) {
+		this.unit = unit;
+	}
+
+	public BigDecimal getMinCoverage() {
 		return minCoverage;
 	}
 
-	public void setMinCoverage(String minCoverage) {
+	public void setMinCoverage(BigDecimal minCoverage) {
 		this.minCoverage = minCoverage;
 	}
 
-	public String getMaxCoverage() {
+	public BigDecimal getMaxCoverage() {
 		return maxCoverage;
 	}
 
-	public void setMaxCoverage(String maxCoverage) {
+	public void setMaxCoverage(BigDecimal maxCoverage) {
 		this.maxCoverage = maxCoverage;
 	}
 
-	public String getClaimSettlementrating() {
+	public BigDecimal getClaimSettlementrating() {
 		return claimSettlementrating;
 	}
 
-	public void setClaimSettlementrating(String claimSettlementrating) {
+	public void setClaimSettlementrating(BigDecimal claimSettlementrating) {
 		this.claimSettlementrating = claimSettlementrating;
 	}
 
@@ -111,6 +123,10 @@ public class Product {
 		this.risk = risk;
 	}
 
+	public void setRisk(Double mortalityRiskFactor) {
+		this.risk = findRisk(mortalityRiskFactor);
+	}
+
 	public int getCashValue() {
 		return cashValue;
 	}
@@ -119,27 +135,35 @@ public class Product {
 		this.cashValue = cashValue;
 	}
 
-	public String getMinTenureYears() {
+	public Date getProductLaunchDate() {
+		return productLaunchDate;
+	}
+
+	public void setProductLaunchDate(Date productLaunchDate) {
+		this.productLaunchDate = productLaunchDate;
+	}
+
+	public int getMinTenureYears() {
 		return minTenureYears;
 	}
 
-	public void setMinTenureYears(String minTenureYears) {
+	public void setMinTenureYears(int minTenureYears) {
 		this.minTenureYears = minTenureYears;
 	}
 
-	public String getMaxTenureYears() {
+	public int getMaxTenureYears() {
 		return maxTenureYears;
 	}
 
-	public void setMaxTenureYears(String maxTenureYears) {
+	public void setMaxTenureYears(int maxTenureYears) {
 		this.maxTenureYears = maxTenureYears;
 	}
 
-	public String getSmoker() {
+	public boolean isSmoker() {
 		return smoker;
 	}
 
-	public void setSmoker(String smoker) {
+	public void setSmoker(boolean smoker) {
 		this.smoker = smoker;
 	}
 
@@ -158,6 +182,7 @@ public class Product {
 	public void setRiders(String riders) {
 		this.riders = riders;
 	}
+<<<<<<< HEAD
 
 	public String getDescriptionHtml() {
 		return descriptionHtml;
@@ -179,16 +204,12 @@ public class Product {
 		values.put(RISK_CATEGORY.CLAIM_SETTLEMENT_RATIO, getClaimSettlementrating());
 		values.put(RISK_CATEGORY.CASH_VALUE, getCashValue());
 		values.put(CARRIER, getCarrierName());
+		values.put(PRODUCT_FIRST_AVAILABLE_IN, new DateTime(getProductLaunchDate()).getYear());
 		option.setValues(values);
 		return option;
 	}
 
-	public String getMaxAge() {
-		return maxAge;
-	}
-
-	public void setMaxAge(String maxAge) {
-		this.maxAge = maxAge;
-	}
-
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/talCrafts/risk-advisor.git

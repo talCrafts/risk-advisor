@@ -1,7 +1,8 @@
 package com.talcrafts.watson.servlet;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,12 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.talcrafts.RISK_CATEGORY;
 import com.talcrafts.core.domain.Product;
+import com.talcrafts.core.util.JsonHelper;
 import com.talcrafts.watson.service.TradeoffAnalyticsService;
 
 @Component
@@ -26,15 +29,20 @@ public class ProductsRecommendationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
 		doPost(req, resp);
 	}
 
 	@Override
-	protected void doPost(final HttpServletRequest req, final HttpServletResponse resp)
-			throws ServletException, IOException {
-		List<Product> products = new ArrayList<>();
-		tradeoffAnalyticsService.getProductRecommendationsForRiskCategory(RISK_CATEGORY.HEALTH, products);
+	protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException {
+		try {
+			String jsonString = FileUtils
+					.readFileToString(new File(this.getClass().getResource("/product.json").toURI().getPath()));
+			List<Product> products = JsonHelper.jsonArrayStringToJson(jsonString, Product.class);
+			tradeoffAnalyticsService.getProductRecommendationsForRiskCategory(RISK_CATEGORY.HEALTH, products);
+		} catch (IOException | URISyntaxException exception) {
+			throw new RuntimeException(exception);
+		}
 
 	}
 
