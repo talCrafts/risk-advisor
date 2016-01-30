@@ -37,7 +37,7 @@ public class ProductsRecommendationServlet extends HttpServlet {
 	protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException {
 		try {
 			String jsonString = FileUtils
-					.readFileToString(new File(this.getClass().getResource("/product.json").toURI().getPath()));
+					.readFileToString(new File(this.getClass().getResource("/json/product.json").toURI().getPath()));
 			List<Product> products = JsonHelper.jsonArrayStringToJson(jsonString, Product.class);
 			tradeoffAnalyticsService.getProductRecommendationsForRiskCategory(RISK_CATEGORY.HEALTH, products);
 		} catch (IOException | URISyntaxException exception) {

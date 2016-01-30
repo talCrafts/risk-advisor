@@ -11,7 +11,6 @@ import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.TradeoffAnalytics;
 import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Dilemma;
 import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Option;
 import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Problem;
-import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Resolution;
 import com.talcrafts.RISK_CATEGORY;
 import com.talcrafts.core.domain.Product;
 import com.talcrafts.core.util.ApplicationProperties;
@@ -36,9 +35,9 @@ public class TradeoffAnalyticsServiceImpl implements TradeoffAnalyticsService {
 			Problem problem = riskCategory.getProblem();
 			problem.setOptions(options);
 			Dilemma dilemma = service.dilemmas(problem);
-			Resolution resolution = dilemma.getResolution();
-			System.out.println(resolution);
-			return JsonHelper.jsonToString(resolution);
+			String dilemmaString = JsonHelper.jsonToString(dilemma);
+			System.out.println(dilemmaString);
+			return dilemmaString;
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}

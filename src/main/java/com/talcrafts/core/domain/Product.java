@@ -13,7 +13,7 @@ public class Product {
 	private String code;
 	private String name;
 	private String carrierName;
-	private String premiumPerUnit;
+	private String premiumPerLac;
 	private String minCoverage;
 	private String maxCoverage;
 	private String claimSettlementrating;
@@ -71,12 +71,12 @@ public class Product {
 		this.carrierName = carrierName;
 	}
 
-	public String getPremiumPerUnit() {
-		return premiumPerUnit;
+	public String getPremiumPerLac() {
+		return premiumPerLac;
 	}
 
-	public void setPremiumPerUnit(String premiumPerUnit) {
-		this.premiumPerUnit = premiumPerUnit;
+	public void setPremiumPerLac(String premiumPerLac) {
+		this.premiumPerLac = premiumPerLac;
 	}
 
 	public String getMinCoverage() {
@@ -173,10 +173,10 @@ public class Product {
 		option.setName(getName());
 		option.setDescriptionHtml(getDescriptionHtml());
 		HashMap<String, Object> values = new HashMap<>();
-		values.put(RISK_CATEGORY.PREMIUM, getPremiumPerUnit());
-		values.put(RISK_CATEGORY.COVERAGE, getMaxCoverage());
-		values.put(RISK_CATEGORY.MAXIMUM_TERM, getMaxTenureYears());
-		values.put(RISK_CATEGORY.CLAIM_SETTLEMENT_RATIO, getClaimSettlementrating());
+		values.put(RISK_CATEGORY.PREMIUM, Double.parseDouble(getPremiumPerLac()));
+		values.put(RISK_CATEGORY.COVERAGE, Double.parseDouble(getMaxCoverage()));
+		values.put(RISK_CATEGORY.MAXIMUM_TERM, Double.parseDouble(getMaxTenureYears()));
+		values.put(RISK_CATEGORY.CLAIM_SETTLEMENT_RATIO, Double.parseDouble(getClaimSettlementrating()));
 		values.put(RISK_CATEGORY.CASH_VALUE, getCashValue());
 		values.put(CARRIER, getCarrierName());
 		option.setValues(values);

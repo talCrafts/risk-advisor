@@ -18,5 +18,6 @@ public class JsonHelperTest {
 		List<Product> objects = JsonHelper.jsonArrayStringToJson(jsonString, Product.class);
 		Assert.assertTrue(objects.size() == 13);
 		Assert.assertTrue(objects.get(0) instanceof Product);
+		Assert.assertTrue(Double.parseDouble(objects.get(0).getPremiumPerLac()) > 0);
 	}
 }
