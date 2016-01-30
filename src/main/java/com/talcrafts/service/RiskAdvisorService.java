@@ -27,7 +27,7 @@ public class RiskAdvisorService{
     	String jsonString;
 		try {
 			jsonString = FileUtils
-					.readFileToString(new File(this.getClass().getResource("/product.json").toURI().getPath()));
+					.readFileToString(new File(this.getClass().getResource("/json/product.json").toURI().getPath()));
 			List<Product> allProducts = JsonHelper.jsonArrayStringToJson(jsonString, Product.class);
 			List<Product> filteredProductList = ProductsFilteringService.getFilteredProductList(userDetails, allProducts);
 		} catch (IOException | URISyntaxException e) {

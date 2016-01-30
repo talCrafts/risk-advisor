@@ -2,7 +2,7 @@
   {
     "carrierName": "Bajaj Allianz Life Insurance Company Limited",
     "name": "BSLI Protector Plus",
-    "code": "BSLIPP",
+    "code": "BSLIPP1",
     "premiumPerLac":"101",
     "minCoverage":"3000000",
     "maxCoverage":"100000000",
@@ -14,12 +14,13 @@
     "smoker":"Yes",
     "benefits":"Death Benefit,Total & Permanent Disability Benefit,Tax Benefit",
     "riders":"Surgical Care Rider, Hospital Care Rider, Waiver of Premium Rider, Accidental Death and Disability Rider, Critical Illness Rider",
-	"maxAge":"65"
+	"maxAge":"65",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='http://d3t9qg8wxjimod.cloudfront.net/_media/iifl/img/article/2015-03/18/full/1426650849-7581.jpg'/>"
   },
   {
     "carrierName": "Bajaj Allianz Life Insurance Company Limited",
     "name": "BSLI Protector Plus",
-    "code": "BSLIPP",
+    "code": "BSLIPP2",
     "premiumPerLac":"101",
     "minCoverage":"3000000",
     "maxCoverage":"10000000",
@@ -31,7 +32,8 @@
     "smoker":"No",
     "benefits":"Death Benefit,Total & Permanent Disability Benefit,Tax Benefit",
     "riders":"Surgical Care Rider, Hospital Care Rider, Waiver of Premium Rider, Accidental Death and Disability Rider, Critical Illness Rider",
-	"maxAge":"65"
+	"maxAge":"65",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='http://d3t9qg8wxjimod.cloudfront.net/_media/iifl/img/article/2015-03/18/full/1426650849-7581.jpg'/>"
   },
   {
     "carrierName": "Bajaj Allianz Life Insurance Company Limited",
@@ -48,7 +50,8 @@
     "smoker":"Yes",
     "benefits":"Death Benefit, Tax Benefits",
     "riders":"",
-	"maxAge":"65"
+	"maxAge":"65",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='http://d3t9qg8wxjimod.cloudfront.net/_media/iifl/img/article/2015-03/18/full/1426650849-7581.jpg'/>"
   },
    {
     "carrierName": "HDFC Standard Life Insurance Co. Ltd",
@@ -65,12 +68,13 @@
     "smoker":"No",
     "benefits":"Death Benefit, Tax Benefits, Disability Benefit",
     "riders":"Accidental Disability Rider, Critical Illness Rider",
-	"maxAge":"75"
+	"maxAge":"75",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='http://www.aurawebs.in/jobflu/css/200_200/96.jpg'/>"
   },
   {
     "carrierName": "HDFC Standard Life Insurance Co. Ltd",
     "name": "HDFC Life Click Income Plus",
-    "code": "BSLIPP",
+    "code": "BSLIPP3",
     "premiumPerLac":"120",
     "minCoverage":"100000",
     "maxCoverage":"1000000",
@@ -82,12 +86,13 @@
     "smoker":"No",
     "benefits":"Death Benefit, Monthly Income",
     "riders":"Child rider",
-	"maxAge":"40"
+	"maxAge":"40",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='http://www.aurawebs.in/jobflu/css/200_200/96.jpg'/>"
   },
   {
     "carrierName": "ICICI Prudential Life Insurance Co. Ltd",
     "name": "ICICI Prudential Super Life Protector",
-    "code": "BSLIPP",
+    "code": "BSLIPP4",
     "premiumPerLac":"225",
     "minCoverage":"2500000",
     "maxCoverage":"10000000",
@@ -99,12 +104,13 @@
     "smoker":"Yes",
     "benefits":"Death Benefit,Tax Benefit",
     "riders":"Waiver of Premium Rider, Accidental Death and Disability Rider, Critical Illness Rider",
-	"maxAge":"45"
+	"maxAge":"45",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='http://insurance.gibl.in/wp-content/themes/GIBL%20New/images/logos/ICICI-Prudential.png'/>"
   },
   {
     "carrierName": "ICICI Prudential Life Insurance Co. Ltd",
     "name": "ICICI Prudential Super Life Protector",
-    "code": "BSLIPP",
+    "code": "BSLIPP5",
     "premiumPerLac":"200",
     "minCoverage":"2500000",
     "maxCoverage":"10000000",
@@ -116,12 +122,13 @@
     "smoker":"Yes",
     "benefits":"Death Benefit,Tax Benefit",
     "riders":"Waiver of Premium Rider, Accidental Death and Disability Rider",
-	"maxAge":"45"
+	"maxAge":"45",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='http://insurance.gibl.in/wp-content/themes/GIBL%20New/images/logos/ICICI-Prudential.png'/>"
   },
   {
     "carrierName": "Exide Life Insurance Company Limited",
     "name": "Exide Life My Term Insurance Plan",
-    "code": "ELMTIP",
+    "code": "ELMTIP1",
     "premiumPerLac":"525",
     "minCoverage":"25000000",
     "maxCoverage":"2500000000",
@@ -133,12 +140,13 @@
     "smoker":"Yes",
     "benefits":"Family Income, Premium Discount",
     "riders":"Terminal Illness Rider, Accidenetal Death Benefit",
-	"maxAge":"58"
+	"maxAge":"58",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='http://www.exidelife.in/images/default-source/default-album/logo3068C2FC5BFC.png'/>"
   },
   {
     "carrierName": "Exide Life Insurance Company Limited",
     "name": "Exide Life My Term Insurance Plan",
-    "code": "ELMTIP",
+    "code": "ELMTIP2",
     "premiumPerLac":"300",
     "minCoverage":"250000",
     "maxCoverage":"2500000",
@@ -150,12 +158,13 @@
     "smoker":"No",
     "benefits":"",
     "riders":"Accidenetal Death Benefit",
-	"maxAge":"58"
+	"maxAge":"58",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='http://www.exidelife.in/images/default-source/default-album/logo3068C2FC5BFC.png'/>"
   },
   {
     "carrierName": "Life Insurance Corporation of India ",
     "name": "LIC's JEEVAN LABH",
-    "code": "LICJL",
+    "code": "LICJL1",
     "premiumPerLac":"90",
     "minCoverage":"250000",
     "maxCoverage":"2500000",
@@ -167,12 +176,13 @@
     "smoker":"Yes",
     "benefits":"Death Benefit, Maturity Benefit, Profit Share",
     "riders":"Accidenetal Death Benefit, Term Assurance Rider",
-	"maxAge":"70"
+	"maxAge":"70",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='https://upload.wikimedia.org/wikipedia/en/a/aa/LIC_Logo.svg'/>"
   },
     {
     "carrierName": "Life Insurance Corporation of India ",
     "name": "LIC's JEEVAN LABH",
-    "code": "LICJL",
+    "code": "LICJL2",
     "premiumPerLac":"82",
     "minCoverage":"200000",
     "maxCoverage":"2000000",
@@ -184,12 +194,13 @@
     "smoker":"Yes",
     "benefits":"Death Benefit, Maturity Benefit",
     "riders":"Accidenetal Death Benefit",
-	"maxAge":"70"
+	"maxAge":"70",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='https://upload.wikimedia.org/wikipedia/en/a/aa/LIC_Logo.svg'/>"
   },
   {
     "carrierName": "Life Insurance Corporation of India ",
     "name": "LIC's JEEVAN SHIKHAR",
-    "code": "LICJS",
+    "code": "LICJS1",
     "premiumPerLac":"100",
     "minCoverage":"250000",
     "maxCoverage":"2500000",
@@ -201,12 +212,13 @@
     "smoker":"Yes",
     "benefits":"Death Benefit, Maturity Benefit, Loyalty Addition",
     "riders":"Accidenetal Death Benefit, Child Rider",
-	"maxAge":"68"
+	"maxAge":"68",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='https://upload.wikimedia.org/wikipedia/en/a/aa/LIC_Logo.svg'/>"
   },
   {
     "carrierName": "Life Insurance Corporation of India ",
     "name": "LIC's JEEVAN LABH",
-    "code": "LICJL",
+    "code": "LICJL3",
     "premiumPerLac":"90",
     "minCoverage":"7500000",
     "maxCoverage":"25000000",
@@ -218,6 +230,7 @@
     "smoker":"No",
     "benefits":"Death Benefit, Loyalty Share",
     "riders":"Accidenetal Death Benefit, Term Assurance Rider, Critical Illness",
-	"maxAge":"60"
+	"maxAge":"60",
+	"descriptionHtml":"<img style='max-height: 100px; max-width: 100px;'  src='https://upload.wikimedia.org/wikipedia/en/a/aa/LIC_Logo.svg'/>"
   }
 ]
