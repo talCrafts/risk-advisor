@@ -10,7 +10,6 @@ import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Option;
 import com.talcrafts.RISK_CATEGORY;
 
 public class Product {
-
 	private static final String CARRIER = "Carrier";
 	private static final String PRODUCT_FIRST_AVAILABLE_IN = "Product First Available:";
 
@@ -32,7 +31,7 @@ public class Product {
 	private String riders;
 	private String descriptionHtml;
 
-	private String findRisk(Double mortalityRiskFactor) {
+	public String findRisk(Double mortalityRiskFactor) {
 		if (mortalityRiskFactor <= 20) {
 			return "Low";
 		} else if (mortalityRiskFactor > 20 && mortalityRiskFactor <= 50) {
@@ -204,5 +203,4 @@ public class Product {
 		option.setValues(values);
 		return option;
 	}
-
 }

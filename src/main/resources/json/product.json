@@ -134,7 +134,7 @@
     "benefits":"Family Income, Premium Discount",
     "riders":"Terminal Illness Rider, Accidenetal Death Benefit",
 	"maxAge":"58"
-  }
+  },
   {
     "carrierName": "Exide Life Insurance Company Limited",
     "name": "Exide Life My Term Insurance Plan",
@@ -168,7 +168,7 @@
     "benefits":"Death Benefit, Maturity Benefit, Profit Share",
     "riders":"Accidenetal Death Benefit, Term Assurance Rider",
 	"maxAge":"70"
-  }
+  },
     {
     "carrierName": "Life Insurance Corporation of India ",
     "name": "LIC's JEEVAN LABH",
@@ -185,7 +185,7 @@
     "benefits":"Death Benefit, Maturity Benefit",
     "riders":"Accidenetal Death Benefit",
 	"maxAge":"70"
-  }
+  },
   {
     "carrierName": "Life Insurance Corporation of India ",
     "name": "LIC's JEEVAN SHIKHAR",
@@ -202,7 +202,7 @@
     "benefits":"Death Benefit, Maturity Benefit, Loyalty Addition",
     "riders":"Accidenetal Death Benefit, Child Rider",
 	"maxAge":"68"
-  }
+  },
   {
     "carrierName": "Life Insurance Corporation of India ",
     "name": "LIC's JEEVAN LABH",
