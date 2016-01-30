@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Product {
-
 	private String code;
 	private String name;
 	private String carrierName;
@@ -22,7 +21,7 @@ public class Product {
 	private String benefits;
 	private String riders;
 
-	private String findRisk(Double mortalityRiskFactor) {
+	public String findRisk(Double mortalityRiskFactor) {
 		if (mortalityRiskFactor <= 20) {
 			return "Low";
 		} else if (mortalityRiskFactor > 20 && mortalityRiskFactor <= 50) {
@@ -169,5 +168,4 @@ public class Product {
 	public void setRiders(String riders) {
 		this.riders = riders;
 	}
-
 }
