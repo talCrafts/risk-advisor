@@ -7,14 +7,11 @@ import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 
-import com.talcrafts.servlet.ProductsRecommendationServlet;
-import com.talcrafts.watson.servlet.DemoServlet;
+import com.talcrafts.watson.servlet.ProductsRecommendationServlet;
 
 @SpringBootApplication
 @PropertySource("classpath:risk_advisor.properties")
 public class RiskAdvisorApplication {
-
-	private DemoServlet demoServlet;
 
 	private ProductsRecommendationServlet productsRecommendationServlet;
 
@@ -24,17 +21,12 @@ public class RiskAdvisorApplication {
 
 	@Bean
 	public ServletRegistrationBean demoServletRegistrationBean() {
-		return new ServletRegistrationBean(demoServlet, "/demo/*");
+		return new ServletRegistrationBean(productsRecommendationServlet, "/demo/*");
 	}
 
 	@Bean
 	public ServletRegistrationBean problemServletRegistrationBean() {
 		return new ServletRegistrationBean(productsRecommendationServlet, "/problem/*");
-	}
-
-	@Autowired(required = false)
-	public void setDemoServlet(DemoServlet demoServlet) {
-		this.demoServlet = demoServlet;
 	}
 
 	@Autowired(required = false)

@@ -1,9 +1,12 @@
 package com.talcrafts.core.domain;
 
-import java.math.BigDecimal;
-import java.util.Date;
+import java.util.HashMap;
+import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Option;
+import com.talcrafts.RISK_CATEGORY;
 
 public class Product {
+	private static final String CARRIER = "Carrier";
+
 	private String code;
 	private String name;
 	private String carrierName;
@@ -12,13 +15,24 @@ public class Product {
 	private String maxCoverage;
 	private String claimSettlementrating;
 	private String risk;
-	private boolean cashValue;
+	private int cashValue = 0;
 	private String minTenureYears;
 	private String maxTenureYears;
 	private String smoker;
 	private String benefits;
 	private String riders;
+	private String descriptionHtml;
 	private String maxAge;
+
+	public String findRisk(Double mortalityRiskFactor) {
+		if (mortalityRiskFactor <= 20) {
+			return "Low";
+		} else if (mortalityRiskFactor > 20 && mortalityRiskFactor <= 50) {
+			return "Moderate";
+		} else {
+			return "High";
+		}
+	}
 
 	public Product(String code, String name, String carrierName) {
 		this.carrierName = carrierName;
@@ -90,11 +104,15 @@ public class Product {
 		this.risk = risk;
 	}
 
-	public boolean isCashValue() {
+	public void setRisk(Double mortalityRiskFactor) {
+		this.risk = findRisk(mortalityRiskFactor);
+	}
+
+	public int getCashValue() {
 		return cashValue;
 	}
 
-	public void setCashValue(boolean cashValue) {
+	public void setCashValue(int cashValue) {
 		this.cashValue = cashValue;
 	}
 
@@ -138,6 +156,30 @@ public class Product {
 		this.riders = riders;
 	}
 
+	public String getDescriptionHtml() {
+		return descriptionHtml;
+	}
+
+	public void setDescriptionHtml(String descriptionHtml) {
+		this.descriptionHtml = descriptionHtml;
+	}
+
+	public Option toOption() {
+		Option option = new Option();
+		option.setKey(getCode());
+		option.setName(getName());
+		option.setDescriptionHtml(getDescriptionHtml());
+		HashMap<String, Object> values = new HashMap<>();
+		values.put(RISK_CATEGORY.PREMIUM, getPremiumPerUnit());
+		values.put(RISK_CATEGORY.COVERAGE, getMaxCoverage());
+		values.put(RISK_CATEGORY.MAXIMUM_TERM, getMaxTenureYears());
+		values.put(RISK_CATEGORY.CLAIM_SETTLEMENT_RATIO, getClaimSettlementrating());
+		values.put(RISK_CATEGORY.CASH_VALUE, getCashValue());
+		values.put(CARRIER, getCarrierName());
+		option.setValues(values);
+		return option;
+	}
+
 	public String getMaxAge()
 	{
 		return maxAge;
@@ -147,4 +189,5 @@ public class Product {
 	{
 		this.maxAge = maxAge;
 	}
+	
 }
