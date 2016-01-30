@@ -34,8 +34,8 @@ public class ProductsRecommendationServlet extends HttpServlet {
 	protected void doPost(final HttpServletRequest req, final HttpServletResponse resp)
 			throws ServletException, IOException {
 		List<Product> products = new ArrayList<>();
-		// products.add();
 		tradeoffAnalyticsService.getProductRecommendationsForRiskCategory(RISK_CATEGORY.HEALTH, products);
+
 	}
 
 	@Autowired(required = false)
