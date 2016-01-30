@@ -1,4 +1,4 @@
-package com.talcarfts.watson.servlet;
+package com.talcrafts.watson.servlet;
 
 import java.io.IOException;
 import java.net.URI;
@@ -23,7 +23,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.util.EntityUtils;
 
-import com.talcarfts.watson.service.TradeoffAnalyticsServiceImpl;
+import com.talcrafts.watson.service.TradeoffAnalyticsServiceImpl;
 
 @WebServlet
 @MultipartConfig
