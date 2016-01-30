@@ -7,29 +7,18 @@ public class Product {
 	private String code;
 	private String name;
 	private String carrierName;
-	private BigDecimal premiumPerUnit;
-	private Integer unit;
-	private BigDecimal minCoverage;
-	private BigDecimal maxCoverage;
-	private BigDecimal claimSettlementrating;
+	private String premiumPerUnit;
+	private String minCoverage;
+	private String maxCoverage;
+	private String claimSettlementrating;
 	private String risk;
 	private boolean cashValue;
-	private Date productLaunchDate;
-	private int minTenureYears;
-	private int maxTenureYears;
-	private boolean smoker;
+	private String minTenureYears;
+	private String maxTenureYears;
+	private String smoker;
 	private String benefits;
 	private String riders;
-
-	public String findRisk(Double mortalityRiskFactor) {
-		if (mortalityRiskFactor <= 20) {
-			return "Low";
-		} else if (mortalityRiskFactor > 20 && mortalityRiskFactor <= 50) {
-			return "Moderate";
-		} else {
-			return "High";
-		}
-	}
+	private String maxAge;
 
 	public Product(String code, String name, String carrierName) {
 		this.carrierName = carrierName;
@@ -61,43 +50,35 @@ public class Product {
 		this.carrierName = carrierName;
 	}
 
-	public BigDecimal getPremiumPerUnit() {
+	public String getPremiumPerUnit() {
 		return premiumPerUnit;
 	}
 
-	public void setPremiumPerUnit(BigDecimal premiumPerUnit) {
+	public void setPremiumPerUnit(String premiumPerUnit) {
 		this.premiumPerUnit = premiumPerUnit;
 	}
 
-	public Integer getUnit() {
-		return unit;
-	}
-
-	public void setUnit(Integer unit) {
-		this.unit = unit;
-	}
-
-	public BigDecimal getMinCoverage() {
+	public String getMinCoverage() {
 		return minCoverage;
 	}
 
-	public void setMinCoverage(BigDecimal minCoverage) {
+	public void setMinCoverage(String minCoverage) {
 		this.minCoverage = minCoverage;
 	}
 
-	public BigDecimal getMaxCoverage() {
+	public String getMaxCoverage() {
 		return maxCoverage;
 	}
 
-	public void setMaxCoverage(BigDecimal maxCoverage) {
+	public void setMaxCoverage(String maxCoverage) {
 		this.maxCoverage = maxCoverage;
 	}
 
-	public BigDecimal getClaimSettlementrating() {
+	public String getClaimSettlementrating() {
 		return claimSettlementrating;
 	}
 
-	public void setClaimSettlementrating(BigDecimal claimSettlementrating) {
+	public void setClaimSettlementrating(String claimSettlementrating) {
 		this.claimSettlementrating = claimSettlementrating;
 	}
 
@@ -109,10 +90,6 @@ public class Product {
 		this.risk = risk;
 	}
 
-	public void setRisk(Double mortalityRiskFactor) {
-		this.risk = findRisk(mortalityRiskFactor);
-	}
-
 	public boolean isCashValue() {
 		return cashValue;
 	}
@@ -121,35 +98,27 @@ public class Product {
 		this.cashValue = cashValue;
 	}
 
-	public Date getProductLaunchDate() {
-		return productLaunchDate;
-	}
-
-	public void setProductLaunchDate(Date productLaunchDate) {
-		this.productLaunchDate = productLaunchDate;
-	}
-
-	public int getMinTenureYears() {
+	public String getMinTenureYears() {
 		return minTenureYears;
 	}
 
-	public void setMinTenureYears(int minTenureYears) {
+	public void setMinTenureYears(String minTenureYears) {
 		this.minTenureYears = minTenureYears;
 	}
 
-	public int getMaxTenureYears() {
+	public String getMaxTenureYears() {
 		return maxTenureYears;
 	}
 
-	public void setMaxTenureYears(int maxTenureYears) {
+	public void setMaxTenureYears(String maxTenureYears) {
 		this.maxTenureYears = maxTenureYears;
 	}
 
-	public boolean isSmoker() {
+	public String getSmoker() {
 		return smoker;
 	}
 
-	public void setSmoker(boolean smoker) {
+	public void setSmoker(String smoker) {
 		this.smoker = smoker;
 	}
 
@@ -167,5 +136,15 @@ public class Product {
 
 	public void setRiders(String riders) {
 		this.riders = riders;
+	}
+
+	public String getMaxAge()
+	{
+		return maxAge;
+	}
+
+	public void setMaxAge(String maxAge)
+	{
+		this.maxAge = maxAge;
 	}
 }

@@ -15,7 +15,7 @@ import org.joda.time.Years;
 
 import com.talcrafts.core.domain.User;
 
-public class MortalityRateFinder {
+public class MortalityRateAndRiskFinder {
 
 	private static final String MORTALITY_RATE_CSV = "src/main/resources/probabilityOfdying.csv";
 	private static final String BMI_CSV = "src/main/resources/BMI.csv";
@@ -90,10 +90,20 @@ public class MortalityRateFinder {
 		return (age >= minAge && age <= maxAge) && (user.getGender().equalsIgnoreCase(gender));
 	}
 
-	private static int findAge(Date dob) {
+	public static int findAge(Date dob) {
 		LocalDate birthdate = new LocalDate(dob);
 		LocalDate now = new LocalDate();
 		Years ageYears = Years.yearsBetween(birthdate, now);
 		return ageYears.getYears();
+	}
+	
+	public static String findRisk(Double mortalityRiskFactor) {
+		if (mortalityRiskFactor <= 20) {
+			return "Low";
+		} else if (mortalityRiskFactor > 20 && mortalityRiskFactor <= 50) {
+			return "Moderate";
+		} else {
+			return "High";
+		}
 	}
 }
