@@ -1,64 +1,53 @@
 package com.talcrafts.watson.service;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.fluent.Executor;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.client.fluent.Response;
-import org.apache.http.entity.ContentType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.TradeoffAnalytics;
+import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Dilemma;
+import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Option;
+import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Problem;
+import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Resolution;
+import com.talcrafts.RISK_CATEGORY;
+import com.talcrafts.core.domain.Product;
+import com.talcrafts.core.util.ApplicationProperties;
 import com.talcrafts.core.util.JsonHelper;
-import com.talcrafts.watson.domain.Options;
-import com.talcrafts.watson.domain.Problem;
 
+@Service
 public class TradeoffAnalyticsServiceImpl implements TradeoffAnalyticsService {
 
-	public static final String BASE_URL = "https://gateway.watsonplatform.net/tradeoff-analytics/api";
-	public static final String username = "fd548db1-624f-4169-a2f6-6c2e46e5e5a3";
-	public static final String password = "LdgOHNJVT9xO";
+	private ApplicationProperties applicationProperties;
 
 	@Override
-	public String getResolutionsForProblem(Problem problem, Options options) {
+	public String getProductRecommendationsForRiskCategory(RISK_CATEGORY riskCategory,
+			List<Product> availableProducts) {
 		try {
-			URI uri = new URI(BASE_URL + "/v1/dilemmas").normalize();
-
-			StringBuilder requestBuilder = new StringBuilder();
-			String problemString = JsonHelper.jsonToString(problem);
-			requestBuilder.append(problemString.substring(0, problemString.lastIndexOf("}")));
-			String optionsString = JsonHelper.jsonToString(options);
-			requestBuilder.append(",");
-			requestBuilder.append(optionsString.substring(optionsString.indexOf("{") + 1));
-
-			Request newReq = Request.Post(uri);
-			newReq.addHeader("Accept", "application/json");
-			String requestBody = requestBuilder.toString();
-
-			newReq.bodyString(requestBody, ContentType.APPLICATION_JSON);
-			Executor executor = Executor.newInstance().auth(username, password)
-					.authPreemptive(new HttpHost(uri.getHost(), uri.getPort(), uri.getScheme()));
-			Response response = executor.execute(newReq);
-			HttpResponse httpResponse = response.returnResponse();
-			byte[] responseBytes = new byte[65000];
-			StringBuilder stringBuilder = new StringBuilder();
-			InputStream responseInputStream = httpResponse.getEntity().getContent();
-			while (responseInputStream.available() > 0) {
-				responseInputStream.read(responseBytes);
-				stringBuilder.append(new String(responseBytes));
+			List<Option> options = new ArrayList<>();
+			for (Product product : availableProducts) {
+				options.add(product.toOption());
 			}
-			return stringBuilder.toString();
-		} catch (IOException | URISyntaxException exception) {
+			TradeoffAnalytics service = new TradeoffAnalytics();
+			service.setUsernameAndPassword(applicationProperties.getTradeoffServiceUserName(),
+					applicationProperties.getTradeoffServicePassword());
+			Problem problem = riskCategory.getProblem();
+			problem.setOptions(options);
+			Dilemma dilemma = service.dilemmas(problem);
+			Resolution resolution = dilemma.getResolution();
+			System.out.println(resolution);
+			return JsonHelper.jsonToString(resolution);
+		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
+
 	}
 
-	@Override
-	public String loadProfile(String profileName) {
-		return null;
+	@Autowired(required = false)
+	public void setApplicationProperties(ApplicationProperties applicationProperties) {
+		this.applicationProperties = applicationProperties;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.talcrafts.core.domain;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
@@ -54,6 +56,22 @@ public class User {
 	public String toString() {
 		return "User [gender=" + gender + ", tobacco=" + tobacco + ", dob=" + dob + ", weightInKgs=" + weightInKgs
 				+ ", heightInInches=" + heightInInches + "]";
+	}
+
+	public static User build(AnswerObject userParameters) {
+		User user = new User();
+		user.setGender("on".equalsIgnoreCase(userParameters.getMale())?"male":"female");
+		user.setTobacco("on".equalsIgnoreCase(userParameters.getTobacooyes())?true:false);
+		
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date dob = format.parse(userParameters.getDob());
+			user.setDob(dob);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 }

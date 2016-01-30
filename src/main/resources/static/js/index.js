@@ -89,7 +89,7 @@
   }
 
   function onError(error) {
-	  alert(error)
+	  alert("Error occurred while processing your request:-"+error.errorMessage)
   }
   window.onerror = onError;
   $(document).ready(onPageLoad);
