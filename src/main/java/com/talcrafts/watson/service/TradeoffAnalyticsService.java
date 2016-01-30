@@ -1,7 +1,7 @@
-package com.talcarfts.watson.service;
+package com.talcrafts.watson.service;
 
-import com.talcarfts.watson.domain.Options;
-import com.talcarfts.watson.domain.Problem;
+import com.talcrafts.watson.domain.Options;
+import com.talcrafts.watson.domain.Problem;
 
 public interface TradeoffAnalyticsService {
 

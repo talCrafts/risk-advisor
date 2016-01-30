@@ -6,8 +6,8 @@ import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import com.talcarfts.servlet.ProductsRecommendationServlet;
-import com.talcarfts.watson.servlet.DemoServlet;
+import com.talcrafts.servlet.ProductsRecommendationServlet;
+import com.talcrafts.watson.servlet.DemoServlet;
 
 @SpringBootApplication
 public class RiskAdvisorApplication {

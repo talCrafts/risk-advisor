@@ -1,72 +1,49 @@
 package com.talcrafts.core.util;
 
-import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.talcrafts.TestObjectMother;
 import com.talcrafts.core.domain.User;
 
 public class MortalityRateFinderTest {
 	@Test
-	public void testAge30() {
-		MortalityRateFinder mortalityRateFinder = new MortalityRateFinder();
-		User user = createTestUser(30);
-		Double mortalityRate = mortalityRateFinder.findMortalityRate(user);
+	public void testAge30AndNonSmoker() {
+		User user = TestObjectMother.createTestUserForAgeAndSmokerStatusAndHeightAndWeight(30, false, 70, 76);
+		Double mortalityRate = MortalityRateFinder.findMortalityRiskFactor(user);
 		Assert.assertNotNull(mortalityRate);
-		Assert.assertEquals(new Double("0.10058"), mortalityRate);
+		Assert.assertEquals(new Double("1.0058"), mortalityRate);
 	}
 
 	@Test
-	public void testAge40() {
-		MortalityRateFinder mortalityRateFinder = new MortalityRateFinder();
-		User user = createTestUser(40);
-		Double mortalityRate = mortalityRateFinder.findMortalityRate(user);
+	public void testAge30AndSmoker() {
+		User user = TestObjectMother.createTestUserForAgeAndSmokerStatusAndHeightAndWeight(30, true, 70, 76);
+		Double mortalityRate = MortalityRateFinder.findMortalityRiskFactor(user);
 		Assert.assertNotNull(mortalityRate);
-		Assert.assertEquals(new Double("0.14822"), mortalityRate);
+		Assert.assertEquals(new Double("21.0058"), mortalityRate);
 	}
 
 	@Test
-	public void testAge50() {
-		MortalityRateFinder mortalityRateFinder = new MortalityRateFinder();
-		User user = createTestUser(50);
-		Double mortalityRate = mortalityRateFinder.findMortalityRate(user);
+	public void testAge48AndSmoker() {
+		User user = TestObjectMother.createTestUserForAgeAndSmokerStatusAndHeightAndWeight(48, true, 64, 86);
+		Double mortalityRate = MortalityRateFinder.findMortalityRiskFactor(user);
 		Assert.assertNotNull(mortalityRate);
-		Assert.assertEquals(new Double("0.32001"), mortalityRate);
+		Assert.assertEquals(new Double("66.61174"), mortalityRate);
 	}
 
 	@Test
-	public void testAge60() {
-		MortalityRateFinder mortalityRateFinder = new MortalityRateFinder();
-		User user = createTestUser(60);
-		Double mortalityRate = mortalityRateFinder.findMortalityRate(user);
+	public void testAge89AndNonSmoker() {
+		User user = TestObjectMother.createTestUserForAgeAndSmokerStatusAndHeightAndWeight(89, false, 50, 57);
+		Double mortalityRate = MortalityRateFinder.findMortalityRiskFactor(user);
 		Assert.assertNotNull(mortalityRate);
-		Assert.assertEquals(new Double("0.90322"), mortalityRate);
+		Assert.assertEquals(new Double("114.485"), mortalityRate);
 	}
 
 	@Test
-	public void testAge97() {
-		MortalityRateFinder mortalityRateFinder = new MortalityRateFinder();
-		User user = createTestUser(97);
-		Double mortalityRate = mortalityRateFinder.findMortalityRate(user);
+	public void testNotInBMI() {
+		User user = TestObjectMother.createTestUserForAgeAndSmokerStatusAndHeightAndWeight(30, false, 200, 2);
+		Double mortalityRate = MortalityRateFinder.findMortalityRiskFactor(user);
 		Assert.assertNotNull(mortalityRate);
-		Assert.assertEquals(new Double("7.42819"), mortalityRate);
-	}
-
-	@Test
-	public void testAge54() {
-		MortalityRateFinder mortalityRateFinder = new MortalityRateFinder();
-		User user = createTestUser(54);
-		Double mortalityRate = mortalityRateFinder.findMortalityRate(user);
-		Assert.assertNotNull(mortalityRate);
-		Assert.assertEquals(new Double("0.32001"), mortalityRate);
-	}
-
-	private User createTestUser(int age) {
-		User user = new User();
-		DateTime dateTime = new DateTime();
-		user.setDob(dateTime.minusYears(age).toDate());
-		user.setGender("Female");
-		user.setTobacco(false);
-		return user;
+		Assert.assertEquals(new Double("101.0057"), mortalityRate);
 	}
 }

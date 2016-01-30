@@ -1,4 +1,4 @@
-package com.talcarfts.util;
+package com.talcrafts.core.util;
 
 import java.io.IOException;
 import java.io.StringWriter;

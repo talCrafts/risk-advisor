@@ -1,4 +1,4 @@
-package com.talcarfts.watson.service;
+package com.talcrafts.watson.service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,9 +12,9 @@ import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
 
-import com.talcarfts.util.JsonHelper;
-import com.talcarfts.watson.domain.Options;
-import com.talcarfts.watson.domain.Problem;
+import com.talcrafts.core.util.JsonHelper;
+import com.talcrafts.watson.domain.Options;
+import com.talcrafts.watson.domain.Problem;
 
 public class TradeoffAnalyticsServiceImpl implements TradeoffAnalyticsService {
 

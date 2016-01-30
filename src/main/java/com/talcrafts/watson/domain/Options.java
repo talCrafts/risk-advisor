@@ -1,4 +1,4 @@
-package com.talcarfts.watson.domain;
+package com.talcrafts.watson.domain;
 
 public class Options {
 
