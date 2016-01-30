@@ -46,4 +46,13 @@ public class MortalityRateFinderTest {
 		Assert.assertNotNull(mortalityRate);
 		Assert.assertEquals(new Double("101.0057"), mortalityRate);
 	}
+	
+	@Test
+	public void testIntegrationScenario() {
+		User user = TestObjectMother.createTestUserForAgeAndSmokerStatusAndHeightAndWeight(37, false, 65, 56);
+		user.setGender("Male");
+		Double mortalityRate = MortalityRateAndRiskFinder.findMortalityRiskFactor(user);
+		Assert.assertNotNull(mortalityRate);
+		Assert.assertEquals(new Double("2.129599"), mortalityRate);
+	}
 }

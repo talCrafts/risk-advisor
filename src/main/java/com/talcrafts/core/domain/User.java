@@ -71,6 +71,10 @@ public class User {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
+		user.setHeightInInches(userParameters.getHeightInFeet()*12 + userParameters.getHeightInInches());
+		user.setWeightInKgs(userParameters.getWeight());
+		System.out.println(user);
 		return user;
 	}
 
