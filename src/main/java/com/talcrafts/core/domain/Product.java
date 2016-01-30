@@ -4,7 +4,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Product {
-	
+
+	private String code;
 	private String name;
 	private String carrierName;
 	private BigDecimal premiumPerUnit;
@@ -18,8 +19,13 @@ public class Product {
 	private Date productLaunchDate;
 	private int minTenureYears;
 	private int maxTenureYears;
-	private String code;
+
 	
+	public Product(String code, String name, String carrierName) {
+		this.carrierName = carrierName;
+		this.code = code;
+		this.name = name;
+	}
 	public String getCode() {
 		return code;
 	}
