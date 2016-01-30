@@ -20,10 +20,6 @@ apply plugin: 'war'
 apply plugin: 'cloudfoundry'
 
 
-jar {
-	baseName = 'risk-advisor'
-	version = '0.0.1-SNAPSHOT'
-}
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -54,6 +50,14 @@ task wrapper(type: Wrapper) {
 
 jar {
 	archiveName='risk-advisor.jar'
+	from {
+		(configurations.runtime).collect {
+			it.isDirectory() ? it : zipTree(it)
+		}
+	}
+	manifest {
+		attributes("Main-Class": "com.talcrafts.RiskAdvisorApplication" )
+	}
 }
 
 cloudfoundry {
