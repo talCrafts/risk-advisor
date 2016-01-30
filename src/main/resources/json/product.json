@@ -1,0 +1,21 @@
+[
+  {
+    "carrierName": "Bajaj Allianz Life Insurance Company Limited",
+    "name": "BSLI Protector Plus",
+    "code": "BSLIPP",
+    "premiumPerLac":"101",
+    "minCoverage":"3000000",
+    "maxCoverage":"100000000",
+    "minTenureYears":"5",
+    "maxTenureYears":"30",
+    "cashValue":false,
+    "claimSettlementrating":"91.29",
+    "risk":"High",
+    "smoker":"No",
+    "benefits":"Death Benefit,Total & Permanent Disability Benefit,Tax Benefit",
+    "riders":"",
+  },
+  {
+   
+  }
+]
