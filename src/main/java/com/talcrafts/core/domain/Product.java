@@ -1,35 +1,28 @@
 package com.talcrafts.core.domain;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.HashMap;
-
-import org.joda.time.DateTime;
-
 import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Option;
 import com.talcrafts.RISK_CATEGORY;
 
 public class Product {
 	private static final String CARRIER = "Carrier";
-	private static final String PRODUCT_FIRST_AVAILABLE_IN = "Product First Available:";
 
 	private String code;
 	private String name;
 	private String carrierName;
-	private BigDecimal premiumPerUnit;
-	private Integer unit;
-	private BigDecimal minCoverage;
-	private BigDecimal maxCoverage;
-	private BigDecimal claimSettlementrating;
+	private String premiumPerUnit;
+	private String minCoverage;
+	private String maxCoverage;
+	private String claimSettlementrating;
 	private String risk;
 	private int cashValue = 0;
-	private Date productLaunchDate;
-	private int minTenureYears;
-	private int maxTenureYears;
-	private boolean smoker;
+	private String minTenureYears;
+	private String maxTenureYears;
+	private String smoker;
 	private String benefits;
 	private String riders;
 	private String descriptionHtml;
+	private String maxAge;
 
 	public String findRisk(Double mortalityRiskFactor) {
 		if (mortalityRiskFactor <= 20) {
@@ -71,43 +64,35 @@ public class Product {
 		this.carrierName = carrierName;
 	}
 
-	public BigDecimal getPremiumPerUnit() {
+	public String getPremiumPerUnit() {
 		return premiumPerUnit;
 	}
 
-	public void setPremiumPerUnit(BigDecimal premiumPerUnit) {
+	public void setPremiumPerUnit(String premiumPerUnit) {
 		this.premiumPerUnit = premiumPerUnit;
 	}
 
-	public Integer getUnit() {
-		return unit;
-	}
-
-	public void setUnit(Integer unit) {
-		this.unit = unit;
-	}
-
-	public BigDecimal getMinCoverage() {
+	public String getMinCoverage() {
 		return minCoverage;
 	}
 
-	public void setMinCoverage(BigDecimal minCoverage) {
+	public void setMinCoverage(String minCoverage) {
 		this.minCoverage = minCoverage;
 	}
 
-	public BigDecimal getMaxCoverage() {
+	public String getMaxCoverage() {
 		return maxCoverage;
 	}
 
-	public void setMaxCoverage(BigDecimal maxCoverage) {
+	public void setMaxCoverage(String maxCoverage) {
 		this.maxCoverage = maxCoverage;
 	}
 
-	public BigDecimal getClaimSettlementrating() {
+	public String getClaimSettlementrating() {
 		return claimSettlementrating;
 	}
 
-	public void setClaimSettlementrating(BigDecimal claimSettlementrating) {
+	public void setClaimSettlementrating(String claimSettlementrating) {
 		this.claimSettlementrating = claimSettlementrating;
 	}
 
@@ -131,35 +116,27 @@ public class Product {
 		this.cashValue = cashValue;
 	}
 
-	public Date getProductLaunchDate() {
-		return productLaunchDate;
-	}
-
-	public void setProductLaunchDate(Date productLaunchDate) {
-		this.productLaunchDate = productLaunchDate;
-	}
-
-	public int getMinTenureYears() {
+	public String getMinTenureYears() {
 		return minTenureYears;
 	}
 
-	public void setMinTenureYears(int minTenureYears) {
+	public void setMinTenureYears(String minTenureYears) {
 		this.minTenureYears = minTenureYears;
 	}
 
-	public int getMaxTenureYears() {
+	public String getMaxTenureYears() {
 		return maxTenureYears;
 	}
 
-	public void setMaxTenureYears(int maxTenureYears) {
+	public void setMaxTenureYears(String maxTenureYears) {
 		this.maxTenureYears = maxTenureYears;
 	}
 
-	public boolean isSmoker() {
+	public String getSmoker() {
 		return smoker;
 	}
 
-	public void setSmoker(boolean smoker) {
+	public void setSmoker(String smoker) {
 		this.smoker = smoker;
 	}
 
@@ -199,8 +176,18 @@ public class Product {
 		values.put(RISK_CATEGORY.CLAIM_SETTLEMENT_RATIO, getClaimSettlementrating());
 		values.put(RISK_CATEGORY.CASH_VALUE, getCashValue());
 		values.put(CARRIER, getCarrierName());
-		values.put(PRODUCT_FIRST_AVAILABLE_IN, new DateTime(getProductLaunchDate()).getYear());
 		option.setValues(values);
 		return option;
 	}
+
+	public String getMaxAge()
+	{
+		return maxAge;
+	}
+
+	public void setMaxAge(String maxAge)
+	{
+		this.maxAge = maxAge;
+	}
+	
 }
