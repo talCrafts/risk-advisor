@@ -19,6 +19,7 @@ public class Product {
 	private int minTenureYears;
 	private int maxTenureYears;
 	private boolean smoker;
+	private String benefits;
 
 	private String findRisk(Double mortalityRiskFactor) {
 		if (mortalityRiskFactor <= 20) {
@@ -150,6 +151,14 @@ public class Product {
 
 	public void setSmoker(boolean smoker) {
 		this.smoker = smoker;
+	}
+
+	public String getBenefits() {
+		return benefits;
+	}
+
+	public void setBenefits(String benefits) {
+		this.benefits = benefits;
 	}
 
 }
