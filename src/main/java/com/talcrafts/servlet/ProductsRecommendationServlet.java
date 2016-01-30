@@ -6,11 +6,12 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.talcrafts.core.util.JsonHelper;
 import com.talcrafts.watson.domain.Column;
@@ -18,8 +19,8 @@ import com.talcrafts.watson.domain.Option;
 import com.talcrafts.watson.domain.Options;
 import com.talcrafts.watson.domain.Problem;
 
-@WebServlet("/problem/*")
-@MultipartConfig
+@Component
+@Scope(value = "prototype")
 public class ProductsRecommendationServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

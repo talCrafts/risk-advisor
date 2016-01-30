@@ -7,6 +7,4 @@ public interface TradeoffAnalyticsService {
 
 	public String getResolutionsForProblem(Problem problem, Options options);
 
-	public String loadProfile(String profileName);
-
 }

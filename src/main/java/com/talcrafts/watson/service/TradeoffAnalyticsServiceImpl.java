@@ -11,21 +11,23 @@ import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.talcrafts.core.util.ApplicationProperties;
 import com.talcrafts.core.util.JsonHelper;
 import com.talcrafts.watson.domain.Options;
 import com.talcrafts.watson.domain.Problem;
 
+@Service
 public class TradeoffAnalyticsServiceImpl implements TradeoffAnalyticsService {
 
-	public static final String BASE_URL = "https://gateway.watsonplatform.net/tradeoff-analytics/api";
-	public static final String username = "fd548db1-624f-4169-a2f6-6c2e46e5e5a3";
-	public static final String password = "LdgOHNJVT9xO";
+	private ApplicationProperties applicationProperties;
 
 	@Override
 	public String getResolutionsForProblem(Problem problem, Options options) {
 		try {
-			URI uri = new URI(BASE_URL + "/v1/dilemmas").normalize();
+			URI uri = new URI(applicationProperties.getTradeoffServiceBaseUrl() + "/v1/dilemmas").normalize();
 
 			StringBuilder requestBuilder = new StringBuilder();
 			String problemString = JsonHelper.jsonToString(problem);
@@ -39,7 +41,9 @@ public class TradeoffAnalyticsServiceImpl implements TradeoffAnalyticsService {
 			String requestBody = requestBuilder.toString();
 
 			newReq.bodyString(requestBody, ContentType.APPLICATION_JSON);
-			Executor executor = Executor.newInstance().auth(username, password)
+			Executor executor = Executor.newInstance()
+					.auth(applicationProperties.getTradeoffServiceUserName(),
+							applicationProperties.getTradeoffServicePassword())
 					.authPreemptive(new HttpHost(uri.getHost(), uri.getPort(), uri.getScheme()));
 			Response response = executor.execute(newReq);
 			HttpResponse httpResponse = response.returnResponse();
@@ -56,9 +60,9 @@ public class TradeoffAnalyticsServiceImpl implements TradeoffAnalyticsService {
 		}
 	}
 
-	@Override
-	public String loadProfile(String profileName) {
-		return null;
+	@Autowired(required = false)
+	public void setApplicationProperties(ApplicationProperties applicationProperties) {
+		this.applicationProperties = applicationProperties;
 	}
 
 }

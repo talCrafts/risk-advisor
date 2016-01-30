@@ -5,8 +5,6 @@ import java.net.URI;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,12 +18,18 @@ import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-import com.talcrafts.watson.service.TradeoffAnalyticsServiceImpl;
+import com.talcrafts.core.util.ApplicationProperties;
 
-@WebServlet
-@MultipartConfig
+@Component
+@Scope(value = "prototype")
 public class DemoServlet extends HttpServlet {
+
+	private ApplicationProperties applicationProperties;
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -65,7 +69,7 @@ public class DemoServlet extends HttpServlet {
 		try {
 			String reqURI = req.getRequestURI();
 			String endpoint = reqURI.substring(reqURI.lastIndexOf('/') + 1);
-			String url = TradeoffAnalyticsServiceImpl.BASE_URL + "/v1/" + endpoint;
+			String url = applicationProperties.getTradeoffServiceBaseUrl() + "/v1/" + endpoint;
 			URI uri = new URI(url).normalize();
 
 			Request newReq = Request.Post(uri);
@@ -105,7 +109,14 @@ public class DemoServlet extends HttpServlet {
 	}
 
 	private Executor buildExecutor(URI url) {
-		return Executor.newInstance().auth(TradeoffAnalyticsServiceImpl.username, TradeoffAnalyticsServiceImpl.password)
+		return Executor.newInstance()
+				.auth(applicationProperties.getTradeoffServiceUserName(),
+						applicationProperties.getTradeoffServicePassword())
 				.authPreemptive(new HttpHost(url.getHost(), url.getPort(), url.getScheme()));
+	}
+
+	@Autowired(required = false)
+	public void setApplicationProperties(ApplicationProperties applicationProperties) {
+		this.applicationProperties = applicationProperties;
 	}
 }
