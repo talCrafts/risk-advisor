@@ -1,47 +1,59 @@
 package com.talcrafts.core.domain;
 
-
-import java.math.BigDecimal;
+import java.util.Date;
 
 public class User {
-	
+
 	private String gender;
 	private boolean tobacco;
-	private String dob;
-	private BigDecimal weight;
-	private BigDecimal height;
-	
+	private Date dob;
+	private int weightInKgs;
+	private int heightInInches;
+
 	public String getGender() {
 		return gender;
 	}
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	public boolean isTobacco() {
 		return tobacco;
 	}
+
 	public void setTobacco(boolean tobacco) {
 		this.tobacco = tobacco;
 	}
-	public String getDob() {
+
+	public Date getDob() {
 		return dob;
 	}
-	public void setDob(String dob) {
+
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-	public BigDecimal getWeight() {
-		return weight;
+
+	public int getWeightInKgs() {
+		return weightInKgs;
 	}
-	public void setWeight(BigDecimal weight) {
-		this.weight = weight;
+
+	public void setWeightInKgs(int weightInKgs) {
+		this.weightInKgs = weightInKgs;
 	}
-	public BigDecimal getHeight() {
-		return height;
+
+	public int getHeightInInches() {
+		return heightInInches;
 	}
-	public void setHeight(BigDecimal height) {
-		this.height = height;
+
+	public void setHeightInInches(int heightInInches) {
+		this.heightInInches = heightInInches;
 	}
-	
-		
+
+	@Override
+	public String toString() {
+		return "User [gender=" + gender + ", tobacco=" + tobacco + ", dob=" + dob + ", weightInKgs=" + weightInKgs
+				+ ", heightInInches=" + heightInInches + "]";
+	}
 
 }

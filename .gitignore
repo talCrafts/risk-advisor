@@ -3,3 +3,9 @@ dist
 bower_components
 .tmp
 .publish/
+/bin/
+build
+.gradle
+.settings
+.classpath
+.project
