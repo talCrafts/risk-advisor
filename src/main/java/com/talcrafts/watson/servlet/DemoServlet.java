@@ -2,8 +2,6 @@ package com.talcrafts.watson.servlet;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -28,7 +26,6 @@ import com.talcrafts.watson.service.TradeoffAnalyticsServiceImpl;
 @WebServlet
 @MultipartConfig
 public class DemoServlet extends HttpServlet {
-	private static Logger logger = Logger.getLogger(DemoServlet.class.getName());
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -63,7 +60,6 @@ public class DemoServlet extends HttpServlet {
 	@Override
 	protected void doPost(final HttpServletRequest req, final HttpServletResponse resp)
 			throws ServletException, IOException {
-		logger.info("doPost");
 
 		req.setCharacterEncoding("UTF-8");
 		try {
@@ -104,7 +100,6 @@ public class DemoServlet extends HttpServlet {
 
 		} catch (Exception e) {
 			// Log something and return an error message
-			logger.log(Level.SEVERE, "got error: " + e.getMessage(), e);
 			resp.setStatus(HttpStatus.SC_BAD_GATEWAY);
 		}
 	}
