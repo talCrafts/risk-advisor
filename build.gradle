@@ -56,9 +56,8 @@ cloudfoundry {
     target = 'https://api.ng.bluemix.net'
     space = 'dev'
     file = new File('build/libs/risk-advisor.war')
-    uri = 'ashish-swiss-re.mybluemix.net'
-    application = 'ashish-swiss-re'
+    uri = 'http://step-risk-advisor.mybluemix.net/'
+    application = 'step-risk-advisor'
+	username='ngkasat@gmail.com'
+	password='Ganesh11'
 }
-
-
-
