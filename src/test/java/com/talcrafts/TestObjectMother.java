@@ -18,11 +18,10 @@ public class TestObjectMother {
 		return user;
 	}
 
-	public static Product createTestProduct(String code, String name, String carrierName, int maxAge,
-			Double riskFactor) {
+	public static Product createTestProduct(String code, String name, String carrierName, int maxAge, String risk) {
 		Product product = new Product(code, name, carrierName);
 		product.setMaxAge(String.valueOf(maxAge));
-		product.setRisk(riskFactor);
+		product.setRisk(risk);
 		product.setSmoker("No");
 		return product;
 	}
