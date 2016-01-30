@@ -52,10 +52,14 @@ task wrapper(type: Wrapper) {
 	gradleVersion = '2.9'
 }
 
+jar {
+	archiveName='risk-advisor.jar'
+}
+
 cloudfoundry {
     target = 'https://api.ng.bluemix.net'
     space = 'dev'
-    file = new File('build/libs/risk-advisor.war')
+    file = new File('build/libs/risk-advisor.jar')
     uri = 'http://step-risk-advisor.mybluemix.net/'
     application = 'step-risk-advisor'
 	username='ngkasat@gmail.com'
