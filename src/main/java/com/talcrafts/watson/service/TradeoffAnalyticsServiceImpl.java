@@ -12,7 +12,7 @@ import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
 
-import com.talcarfts.util.JsonHelper;
+import com.talcrafts.util.JsonHelper;
 import com.talcrafts.watson.domain.Options;
 import com.talcrafts.watson.domain.Problem;
 
