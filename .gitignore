@@ -1,0 +1,11 @@
+*.orig
+target/
+dist/
+bin/
+.classpath
+.project
+.settings
+.idea/
+build/
+.gradle
+.metadata

@@ -1,4 +1,4 @@
-package com.talcarfts;
+package com.talcrafts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
