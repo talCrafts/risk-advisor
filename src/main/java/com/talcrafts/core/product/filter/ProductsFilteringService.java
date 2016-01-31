@@ -3,7 +3,7 @@ package com.talcrafts.core.product.filter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang.BooleanUtils;
 
 import com.talcrafts.core.domain.Product;
 import com.talcrafts.core.domain.User;

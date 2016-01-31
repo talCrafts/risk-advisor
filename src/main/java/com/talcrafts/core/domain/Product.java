@@ -1,14 +1,15 @@
 package com.talcrafts.core.domain;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.Option;
 import com.talcrafts.RISK_CATEGORY;
+import com.talcrafts.watson.domain.Option;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
-	private static final String CARRIER = "Carrier";
+	private static final String CARRIER = "carrier";
 
 	private String code;
 	private String name;
@@ -173,10 +174,11 @@ public class Product {
 		option.setName(getName());
 		option.setDescriptionHtml(getDescriptionHtml());
 		HashMap<String, Object> values = new HashMap<>();
-		values.put(RISK_CATEGORY.PREMIUM, Double.parseDouble(getPremiumPerLac()));
-		values.put(RISK_CATEGORY.COVERAGE, Double.parseDouble(getMaxCoverage()));
-		values.put(RISK_CATEGORY.MAXIMUM_TERM, Double.parseDouble(getMaxTenureYears()));
-		values.put(RISK_CATEGORY.CLAIM_SETTLEMENT_RATIO, Double.parseDouble(getClaimSettlementrating()));
+
+		values.put(RISK_CATEGORY.PREMIUM, new BigDecimal(getPremiumPerLac()));
+		values.put(RISK_CATEGORY.COVERAGE, new BigDecimal(getMaxCoverage()));
+		values.put(RISK_CATEGORY.MAXIMUM_TERM, new BigDecimal(getMaxTenureYears()));
+		values.put(RISK_CATEGORY.CLAIM_SETTLEMENT_RATIO, new BigDecimal(getClaimSettlementrating()));
 		values.put(RISK_CATEGORY.CASH_VALUE, getCashValue());
 		values.put(CARRIER, getCarrierName());
 		option.setValues(values);

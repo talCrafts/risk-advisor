@@ -29,4 +29,12 @@ public final class JsonHelper {
 		return objectMapper.readValue(jsonArrayString, javaType);
 	}
 
+	public static final String jsonToPrettyString(Object value)
+			throws JsonGenerationException, JsonMappingException, IOException {
+		objectMapper.setSerializationInclusion(Include.NON_NULL);
+		StringWriter stringWriter = new StringWriter();
+		objectMapper.writerWithDefaultPrettyPrinter().writeValue(stringWriter, value);
+		return stringWriter.toString();
+	}
+
 }
