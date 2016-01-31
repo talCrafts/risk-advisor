@@ -5,6 +5,7 @@
 
 (function() {
   // GLOBAL VARIABLES
+  var loaded=false;
   var taClient = null;
   var lastProfile = 'basic';
   var MIN_BAR_SLIDE_PERIOD = 500;
@@ -70,6 +71,9 @@
   }
 
   function onPageReady() {
+	  if(!loaded){
+	  	$('.analyze').click();
+  	}
   }
 
   function onPageLoad() {
