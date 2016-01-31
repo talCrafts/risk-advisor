@@ -63,15 +63,19 @@ public class User {
 		user.setGender("on".equalsIgnoreCase(userParameters.getMale()) ? "male" : "female");
 		user.setTobacco("on".equalsIgnoreCase(userParameters.getTobacooyes()) ? true : false);
 
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			Date dob = format.parse(userParameters.getDob());
-			user.setDob(dob);
-		} catch (ParseException e) {
-			e.printStackTrace();
+		if (userParameters.getDob() != null) {
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				Date dob = format.parse(userParameters.getDob());
+				user.setDob(dob);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 
-		user.setHeightInInches(userParameters.getHeightInFeet() * 12 + userParameters.getHeightInInches());
+		if(userParameters.getHeightInFeet() != null && userParameters.getHeightInInches() !=null ){
+			user.setHeightInInches(userParameters.getHeightInFeet() * 12 + userParameters.getHeightInInches());
+		}
 		user.setWeightInKgs(userParameters.getWeight());
 		return user;
 	}
