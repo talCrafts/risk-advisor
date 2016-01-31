@@ -45,8 +45,8 @@ public class ProductsRecommendationServlet extends HttpServlet {
 				String parameterName = enumeration.nextElement();
 				System.out.println(parameterName + req.getParameterValues(parameterName));
 			}
-			String jsonString = FileUtils.readFileToString(
-					new File(this.getClass().getResource("/com/talcrafts/service/product.json").toURI().getPath()));
+			String jsonString = FileUtils
+					.readFileToString(new File(this.getClass().getResource("/product.json").toURI().getPath()));
 			List<Product> products = JsonHelper.jsonArrayStringToJson(jsonString, Product.class);
 			PrintWriter writer = resp.getWriter();
 			writer.write(tradeoffAnalyticsService.getProductRecommendationsForRiskCategory(RISK_CATEGORY.HEALTH,
