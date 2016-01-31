@@ -1,8 +1,11 @@
 package com.talcrafts.watson.servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,8 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -36,24 +38,22 @@ public class ProductsRecommendationServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) {
+	protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException {
 		try {
-			List<OBJECTIVE> objectives = getObjectives(req);
-			byte[] bytes = new byte[req.getContentLength()];
-			IOUtils.readFully(req.getInputStream(), bytes);
-			String availableProductsJson = new String(bytes);
-			String productRecommendations = "";
-			if (availableProductsJson != null && StringUtils.isNotBlank(availableProductsJson)) {
-				List<Product> products = JsonHelper.jsonArrayStringToJson(availableProductsJson, Product.class);
-				productRecommendations = tradeoffAnalyticsService
-						.getProductRecommendationsForRiskCategory(RISK_CATEGORY.HEALTH, products, objectives);
-
+			Enumeration<String> enumeration = req.getParameterNames();
+			while (enumeration.hasMoreElements()) {
+				String parameterName = enumeration.nextElement();
+				System.out.println(parameterName + req.getParameterValues(parameterName));
 			}
+			String jsonString = FileUtils.readFileToString(
+					new File(this.getClass().getResource("/com/talcrafts/service/product.json").toURI().getPath()));
+			List<Product> products = JsonHelper.jsonArrayStringToJson(jsonString, Product.class);
 			PrintWriter writer = resp.getWriter();
-			writer.write(productRecommendations);
+			writer.write(tradeoffAnalyticsService.getProductRecommendationsForRiskCategory(RISK_CATEGORY.HEALTH,
+					products, getObjectives(req)));
 			writer.flush();
 			writer.close();
-		} catch (IOException exception) {
+		} catch (IOException | URISyntaxException exception) {
 			throw new RuntimeException(exception);
 		}
 
