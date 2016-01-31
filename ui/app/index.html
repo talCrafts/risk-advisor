@@ -108,6 +108,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: var(--paper-green-500);
         color: white;
       }
+
+
+  .big {
+    --iron-icon-height: 64px;
+    --iron-icon-width: 64px;
+  }
+
     </style>
    </head>
 
@@ -117,82 +124,122 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <span id="browser-sync-binding"></span>
   <template is="dom-bind" id="app">
   <div class="content">
-      <form is="iron-form" id="form" method="post" action="/api/form">
+      <div class="horizontal layout">
+      <h2>Risk Advisor</h2>
+      <iron-icon class="big" src="images/logo.png"></iron-icon>
+      </div>
+      <form is="iron-form" id="formAll" method="post" action="/api/form">
       <iron-pages selected="0">
           <section>
-            <paper-card >
+            <paper-toolbar>
+                    <div>Tell us your name</div>
+            </paper-toolbar>
+            <div class="card-content">
+                <div class="horizontal layout">
+                  <iron-image src="images/name.jpg"></iron-image>
+                  <paper-input name="firstname" label="First Name"></paper-input>
+                  <paper-input name="lastname" label="Last Name"></paper-input>
+                </div>
+            </div>
+            
+            <div class="card-actions flex-end-justified">
+                  <paper-fab icon="arrow-forward" title="Next" >Next</paper-fab>
+            </div>          
+          </section>
+
+          <section>
+     
                 <paper-toolbar>
-                    <div>Let us know</div>
+                    <div>No gender discrimination but we need to know your gender</div>
                 </paper-toolbar>
                 <div class="card-content">
-                  When I see things like #search-item .search-article, #search-item .search-article, and #search-item .search-article I sense you are overspecifying your CSS which makes writing concise jQuery very difficult. This should be avoided if at all possible.
-                </div>
-                <paper-radio-group selected="male">
-                        <paper-radio-button name="male">Male</paper-radio-button>
-                        <paper-radio-button name="female">Female</paper-radio-button>
-                        <paper-radio-button name="other">Others</paper-radio-button>
+                  <paper-radio-group selected="male">
+                      <paper-radio-button name="male"><iron-image src="images/male.png"></paper-radio-button>
+                       
+                        <paper-radio-button name="female" src="images/female.png"><iron-image src="images/female.png"></paper-radio-button>
                 </paper-radio-group>
-                <paper-input name="dob" type="date" label="Date of Birth"></paper-input>
+                </div>
+                
                 <div class="card-actions flex-end-justified">
                   <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
                 </div>
-            </paper-card>
+     
+          </section>
+
+          <section>
+     
+                <paper-toolbar>
+                    <div>Tell us your date of birth</div>
+                </paper-toolbar>
+                <div class="card-content">
+                  
+                </div>
+                <div class="horizontal layout">
+                  <iron-image src="images/dob.png">
+                  </iron-image>
+                  <paper-input name="dob" type="date" label="Date of Birth"></paper-input>
+                </div>
+                  <div class="card-actions flex-end-justified">
+                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
+                </div>
+     
           </section>
           
           <section>
              <paper-toolbar>
-                    <div>LifeStyle</div>
+                    <div>Do you smoke ?</div>
                 </paper-toolbar>
               <div class="card-content">
                   <div class="card-content">
-                  Do you consume tobacco in any form?
+
                   </div>
                  <paper-radio-group selected="tobaccono">
+                    <iron-image src="images/cigratte.jpg"></iron-image>
                     <paper-radio-button name="tobaccoyes">Yes</paper-radio-button>
+                    <iron-image src="images/no-cigratte.jpg"></iron-image>
                     <paper-radio-button name="tobaccono">No</paper-radio-button>
                   </paper-radio-group>
+                  
+              </div>
+              <div class="card-actions flex-end-justified">
+                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
+                </div>            
+          </section>
+
+           <section>
+             <paper-toolbar>
+                    <div>Build chart details </div>
+                </paper-toolbar>
+              <div class="card-content">
+                  
+                  
                   <div class="card-content">
-                  this tsfd  jskfaj asfjafl adfls asfdja asdfalj
+                  tell us your height
                   </div>
                   <div class="horizontal layout">
                     <paper-input name="heightfeet" type="number" label="feet"></paper-input>
                     <paper-input name="heightinches" type="number" label="inches"></paper-input>
                   </div>
                   <div class="card-content">
-                  this tsfd  jskfaj asfjafl adfls asfdja asdfalj
+                  tell us your weight
                   </div>
                   <div class="horizontal layout">
                     <paper-input name="weight" type="number" label="kilogram"></paper-input>
                   </div>
               </div>
               <div class="card-actions flex-end-justified">
-                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
+                  <paper-fab icon="arrow-forward" title="Submit">Next</paper-fab>
                 </div>            
           </section>
           
-          <section>
-            <paper-toolbar>
-                    <div>Whats your name</div>
-            </paper-toolbar>
-            <div class="card-content">
-                <div class="horizontal layout">
-                  <paper-input name="firstname" label="First Name"></paper-input>
-                  <paper-input name="lastname" label="Last Name"></paper-input>
-                </div>
-            </div>
-            <div class="card-actions flex-end-justified">
-                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
-            </div>          
-          </section>
-
+         
           <section>
           <paper-toolbar>
                     <div>Some of products we recommend</div>
                 </paper-toolbar>
             
               <template is="dom-bind" id="conatiner">
-                <iron-ajax auto url="/api/product/all" handle-as="json" last-response="{{productList}}">
-                </iron-ajax>
+ 
                 <template is="dom-repeat" items="{{productList}}">
                   <paper-material elevation="1">
                     <paper-button raised toggle class="false">[[item.carrierName]]</paper-button>
@@ -224,16 +271,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="scripts/app.js"></script>
   <!-- endbuild-->
   <script type="text/javascript">
+    
     function submitForm() {
-      document.getElementById('form').submit();
+      document.getElementById('formAll').submit();
     }
     document.addEventListener('click', function(e) {
       var clicker=e.srcElement.icon;
       if(clicker == "arrow-forward"){
+        if(e.srcElement.title == "Submit"){
+          submitForm();
+        }
         var pages = document.querySelector('iron-pages');
         pages.selectNext();
       }
     });
+
+    
+     
   </script>
     
 

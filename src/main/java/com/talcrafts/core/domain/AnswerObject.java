@@ -102,36 +102,36 @@ public class AnswerObject {
 		for (String var : answerArray) {
 			String[] split = var.split("=");
 
-			if ("male".equalsIgnoreCase(split[0])) {
+			if ("male".equalsIgnoreCase(split[0]) && split.length==2) {
 				object.setMale(split[1]);
 			}
 
-			else if ("female".equalsIgnoreCase(split[0])) {
+			else if ("female".equalsIgnoreCase(split[0]) && split.length==2) {
 				object.setFemale(split[1]);
 			}
 
-			else if ("firstname".equalsIgnoreCase(split[0])) {
+			else if ("firstname".equalsIgnoreCase(split[0]) && split.length==2) {
 				object.setFirstname(split[1]);
 			}
 
-			else if ("lastname".equalsIgnoreCase(split[0])) {
+			else if ("lastname".equalsIgnoreCase(split[0]) && split.length==2 ) {
 				object.setLastname(split[1]);
-			} else if ("dob".equalsIgnoreCase(split[0])) {
+			} else if ("dob".equalsIgnoreCase(split[0]) && split.length==2) {
 				object.setDob(split[1]);
 			}
 
-			else if ("tobaccoyes".equalsIgnoreCase(split[0])) {
+			else if ("tobaccoyes".equalsIgnoreCase(split[0]) && split.length==2 ) {
 				object.setTobacooyes(split[1]);
-			} else if ("tobaccoyes".equalsIgnoreCase(split[0])) {
+			} else if ("tobaccoyes".equalsIgnoreCase(split[0]) && split.length==2) {
 				object.setTobacoono(split[1]);
 			}
-			else if("heightinches".equalsIgnoreCase(split[0])){
+			else if("heightinches".equalsIgnoreCase(split[0]) && split.length==2){
 				object.setHeightInInches(Integer.valueOf(split[1]));
 			}
-			else if("heightfeet".equalsIgnoreCase(split[0])){
+			else if("heightfeet".equalsIgnoreCase(split[0]) && split.length==2 ){
 				object.setHeightInFeet(Integer.valueOf(split[1]));
 			}
-			else if("weight".equalsIgnoreCase(split[0])){
+			else if("weight".equalsIgnoreCase(split[0]) && split.length==2 ){
 				object.setWeight(Integer.valueOf(split[1]));
 			}
 		}
