@@ -117,7 +117,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <span id="browser-sync-binding"></span>
   <template is="dom-bind" id="app">
   <div class="content">
-      <form is="iron-form" id="form" method="post" action="/api/form">
+      <form is="iron-form" id="formAll" method="post" action="/api/form">
       <iron-pages selected="0">
           <section>
             <paper-card >
@@ -181,7 +181,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
             </div>
             <div class="card-actions flex-end-justified">
-                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
+                  <paper-fab icon="arrow-forward" title="Submit" >Next</paper-fab>
             </div>          
           </section>
 
@@ -224,16 +224,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="scripts/app.js"></script>
   <!-- endbuild-->
   <script type="text/javascript">
+    
     function submitForm() {
-      document.getElementById('form').submit();
+      document.getElementById('formAll').submit();
     }
     document.addEventListener('click', function(e) {
       var clicker=e.srcElement.icon;
       if(clicker == "arrow-forward"){
+        if(e.srcElement.title == "Submit"){
+          submitForm();
+        }
         var pages = document.querySelector('iron-pages');
         pages.selectNext();
       }
     });
+
+    
+     
   </script>
     
 
