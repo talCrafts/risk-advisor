@@ -5,7 +5,7 @@
 
 (function() {
   // GLOBAL VARIABLES
-  var loaded=false;
+  var tradeoffWidgetFilled=false;
   var taClient = null;
   var lastProfile = 'basic';
   var MIN_BAR_SLIDE_PERIOD = 500;
@@ -71,7 +71,8 @@
   }
 
   function onPageReady() {
-	  if(!loaded){
+	  if(!tradeoffWidgetFilled){
+		tradeoffWidgetFilled=true;
 	  	$('.analyze').click();
   	}
   }
