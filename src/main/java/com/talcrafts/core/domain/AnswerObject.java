@@ -120,9 +120,9 @@ public class AnswerObject {
 				object.setDob(split[1]);
 			}
 
-			else if ("tobacooyes".equalsIgnoreCase(split[0])) {
+			else if ("tobaccoyes".equalsIgnoreCase(split[0])) {
 				object.setTobacooyes(split[1]);
-			} else if ("tobacoono".equalsIgnoreCase(split[0])) {
+			} else if ("tobaccoyes".equalsIgnoreCase(split[0])) {
 				object.setTobacoono(split[1]);
 			}
 			else if("heightinches".equalsIgnoreCase(split[0])){
