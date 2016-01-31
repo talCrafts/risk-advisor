@@ -15,8 +15,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
   var app = document.querySelector('#app');
 
+  var productList;
+
   function display(e) {
-    console.log('Server Response: ',e.detail);
+    productList = e.detail.response;
+    console.log('Server Response: ', e.detail.response);
+    var conatiner = document.querySelector('#conatiner');
+    conatiner.productList = productList;
   }
 
   // Sets app default base URL

@@ -204,7 +204,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   
               </div>
               <div class="card-actions flex-end-justified">
-                  <paper-fab icon="arrow-forward" title="Submit">Next</paper-fab>
+                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
                 </div>            
           </section>
 
@@ -241,8 +241,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </paper-toolbar>
             
               <template is="dom-bind" id="conatiner">
-                <iron-ajax auto url="/api/product/all" handle-as="json" last-response="{{productList}}">
-                </iron-ajax>
+ 
                 <template is="dom-repeat" items="{{productList}}">
                   <paper-material elevation="1">
                     <paper-button raised toggle class="false">[[item.carrierName]]</paper-button>
