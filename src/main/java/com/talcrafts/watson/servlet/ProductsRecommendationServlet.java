@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -40,11 +39,12 @@ public class ProductsRecommendationServlet extends HttpServlet {
 	@Override
 	protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException {
 		try {
-			Enumeration<String> enumeration = req.getParameterNames();
-			while (enumeration.hasMoreElements()) {
-				String parameterName = enumeration.nextElement();
-				System.out.println(parameterName + req.getParameterValues(parameterName));
-			}
+			// Enumeration<String> enumeration = req.getParameterNames();
+			// while (enumeration.hasMoreElements()) {
+			// String parameterName = enumeration.nextElement();
+			// System.out.println(parameterName +
+			// req.getParameterValues(parameterName));
+			// }
 			String jsonString = FileUtils
 					.readFileToString(new File(this.getClass().getResource("/json/product.json").toURI().getPath()));
 			List<Product> products = JsonHelper.jsonArrayStringToJson(jsonString, Product.class);

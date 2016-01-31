@@ -60,10 +60,9 @@ public class User {
 
 	public static User build(AnswerObject userParameters) {
 		User user = new User();
-		user.setGender("on".equalsIgnoreCase(userParameters.getMale())?"male":"female");
-		user.setTobacco("on".equalsIgnoreCase(userParameters.getTobacooyes())?true:false);
-		
-		
+		user.setGender("on".equalsIgnoreCase(userParameters.getMale()) ? "male" : "female");
+		user.setTobacco("on".equalsIgnoreCase(userParameters.getTobacooyes()) ? true : false);
+
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			Date dob = format.parse(userParameters.getDob());
@@ -71,10 +70,9 @@ public class User {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		user.setHeightInInches(userParameters.getHeightInFeet()*12 + userParameters.getHeightInInches());
+
+		user.setHeightInInches(userParameters.getHeightInFeet() * 12 + userParameters.getHeightInInches());
 		user.setWeightInKgs(userParameters.getWeight());
-		System.out.println(user);
 		return user;
 	}
 

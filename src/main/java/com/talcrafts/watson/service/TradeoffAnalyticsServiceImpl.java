@@ -52,7 +52,6 @@ public class TradeoffAnalyticsServiceImpl implements TradeoffAnalyticsService {
 			requestBuilder.append(",");
 			requestBuilder.append(optionsString.substring(optionsString.indexOf("{") + 1));
 			String request = requestBuilder.toString();
-			System.out.println(request.toString());
 			String solution = getResoultionForProblem(new ByteArrayInputStream(request.getBytes()), "dilemmas", "");
 			return solution;
 		} catch (IOException exception) {
@@ -73,7 +72,6 @@ public class TradeoffAnalyticsServiceImpl implements TradeoffAnalyticsService {
 			}
 			InputStreamEntity entity = new InputStreamEntity(inputstream);
 			String requestBody = EntityUtils.toString(entity, "UTF-8");
-			System.out.println("Request is:" + requestBody);
 			newReq.bodyString(requestBody, ContentType.APPLICATION_JSON);
 			Executor executor = this.buildExecutor(uri);
 			Response response = executor.execute(newReq);
