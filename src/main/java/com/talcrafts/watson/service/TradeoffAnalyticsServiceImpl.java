@@ -76,8 +76,6 @@ public class TradeoffAnalyticsServiceImpl implements TradeoffAnalyticsService {
 			Executor executor = this.buildExecutor(uri);
 			Response response = executor.execute(newReq);
 			HttpResponse httpResponse = response.returnResponse();
-
-			httpResponse.getEntity().writeTo(System.out);
 			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 			httpResponse.getEntity().writeTo(byteArrayOutputStream);
 			return new String(byteArrayOutputStream.toByteArray());
