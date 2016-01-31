@@ -1,6 +1,8 @@
 package com.talcrafts.service;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class RiskAdvisorService{
     	String jsonString;
 		try {
 			jsonString = FileUtils
-					.readFileToString(new File(this.getClass().getResource("product.json").toURI().getPath()));
+					.readFileToString(new File(this.getClass().getResource("/product.json").toURI().getPath()));
 			List<Product> allProducts = JsonHelper.jsonArrayStringToJson(jsonString, Product.class);
 			filteredProductList.addAll(ProductsFilteringService.getFilteredProductList(userDetails, allProducts));
 		} catch (IOException | URISyntaxException e) {
@@ -38,7 +40,6 @@ public class RiskAdvisorService{
     	return filteredProductList;
     }
 
-    
     @RequestMapping(value="/get")
     public String get() {
     	return "GET";

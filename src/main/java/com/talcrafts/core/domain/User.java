@@ -76,7 +76,10 @@ public class User {
 		if(userParameters.getHeightInFeet() != null && userParameters.getHeightInInches() !=null ){
 			user.setHeightInInches(userParameters.getHeightInFeet() * 12 + userParameters.getHeightInInches());
 		}
-		user.setWeightInKgs(userParameters.getWeight());
+		
+		if(userParameters.getWeight() != null){
+			user.setWeightInKgs(userParameters.getWeight());
+		}
 		return user;
 	}
 
