@@ -231,37 +231,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <paper-fab icon="arrow-forward" title="Last">Next</paper-fab>
                 </div>            
           </section>
-          
-         
-          <section>
-          <paper-toolbar>
-                    <div>Some of products we recommend</div>
-                </paper-toolbar>
-            
-              <template is="dom-bind" id="conatiner">
- 
-                <template is="dom-repeat" items="{{productList}}">
-                  <paper-material elevation="1">
-                    <paper-button raised toggle class="false">[[item.carrierName]]</paper-button>
-                  </paper-material>
-                </template>
-              </template> 
-              <div class="card-actions flex-end-justified">
-                <a href="{{url}}/recommend.html" target="_blank">
-                  <paper-fab icon="arrow-forward" title="Last">Last</paper-fab>
-                </a>
-              </div>            
-          </section>
-          <section>
-          <paper-toolbar>
-                    <div>Tradeoff Widget</div>
-          </paper-toolbar>
-            <div class="card-content">
-              <link rel="import" href="/message.html">
-            </div>
-          </section>
-                   
-                
     </iron-pages>
     </form>
     </div>
