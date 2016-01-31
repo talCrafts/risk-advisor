@@ -228,7 +228,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   </div>
               </div>
               <div class="card-actions flex-end-justified">
-                  <paper-fab icon="arrow-forward" title="Submit">Next</paper-fab>
+                  <paper-fab icon="arrow-forward" title="Last">Next</paper-fab>
                 </div>            
           </section>
           
@@ -248,7 +248,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </template> 
               <div class="card-actions flex-end-justified">
                 <a href="{{url}}/recommend.html" target="_blank">
-                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
+                  <paper-fab icon="arrow-forward" title="Last">Last</paper-fab>
                 </a>
               </div>            
           </section>
@@ -282,6 +282,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       if(clicker == "arrow-forward"){
         if(e.srcElement.title == "Submit"){
           submitForm();
+        }
+	if(e.srcElement.title == "Last"){
+          window.location.href = '/recommend.html';
+          return true;
         }
         var pages = document.querySelector('iron-pages');
         pages.selectNext();
