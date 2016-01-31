@@ -1,0 +1,242 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Polymer Starter Kit" />
+  <title>Risk Advisor</title>
+  <!-- Place favicon.ico in the `app/` directory -->
+
+  <!-- Chrome for Android theme color -->
+  <meta name="theme-color" content="#2E3AA1">
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Tile color for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="PSK">
+  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit">
+  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/sky/sky.css">
+  <!-- endbuild-->
+
+  <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <!-- endbuild -->
+
+  <!-- will be replaced with elements/elements.vulcanized.html -->
+  <link rel="import" href="elements/elements.html">
+  <!-- endreplace-->
+
+  <!-- For shared styles, shared-styles.html import in elements.html -->
+  <style is="custom-style" include="shared-styles">
+      body {
+        padding: 15px;
+        @apply(--layout-fullbleed);
+        @apply(--paper-font-common-base);
+      }
+      neon-animated-pages {
+        height: 100%;
+      }
+      .large {
+        width: 100%
+      }
+      .button {
+        text-align: center;
+        width: 120px;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 2px;
+        font-size: 0.9em;
+        background-color: #fff;
+        color: #646464;
+      }
+      .button.blue {
+        background-color: #4285f4;
+        color: #fff;
+      }
+      .button.raised {
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      }
+      .button.back {
+        position: fixed;
+        top: 30px;
+        left: 30px;
+      }
+      .card-contents {
+        @apply(--layout-vertical);
+        @apply(--layout-center-center);
+        @apply(--layout-fit);
+      }
+      .button-container {
+        @apply(--layout-flex);
+        @apply(--layout-horizontal);
+        @apply(--layout-around-justified);
+      }
+      .flex-end-justified {
+            @apply(--layout-horizontal);
+            @apply(--layout-end-justified);
+          }
+      paper-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+      }
+    </style>
+   </head>
+
+<body >
+ <!-- Main Content -->
+  
+  <span id="browser-sync-binding"></span>
+  <template is="dom-bind" id="app">
+  <div class="content">
+      <form is="iron-form" id="form" method="post" action="/api/form">
+      <iron-pages selected="0">
+          <section>
+            <paper-card >
+                <paper-toolbar>
+                    <div>Let us know</div>
+                </paper-toolbar>
+                <div class="card-content">
+                  When I see things like #search-item .search-article, #search-item .search-article, and #search-item .search-article I sense you are overspecifying your CSS which makes writing concise jQuery very difficult. This should be avoided if at all possible.
+                </div>
+                <paper-radio-group selected="male">
+                        <paper-radio-button name="male">Male</paper-radio-button>
+                        <paper-radio-button name="female">Female</paper-radio-button>
+                        <paper-radio-button name="other">Others</paper-radio-button>
+                </paper-radio-group>
+                <paper-input name="dob" type="date" label="Date of Birth"></paper-input>
+                <div class="card-actions flex-end-justified">
+                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
+                </div>
+            </paper-card>
+          </section>
+          
+          <section>
+             <paper-toolbar>
+                    <div>LifeStyle</div>
+                </paper-toolbar>
+              <div class="card-content">
+                  <div class="card-content">
+                  Do you consume tobacco in any form?
+                  </div>
+                 <paper-radio-group selected="tobaccono">
+                    <paper-radio-button name="tobaccoyes">Yes</paper-radio-button>
+                    <paper-radio-button name="tobaccono">No</paper-radio-button>
+                  </paper-radio-group>
+                  <div class="card-content">
+                  this tsfd  jskfaj asfjafl adfls asfdja asdfalj
+                  </div>
+                  <div class="horizontal layout">
+                    <paper-input name="heightfeet" type="number" label="feet"></paper-input>
+                    <paper-input name="heightinches" type="number" label="inches"></paper-input>
+                  </div>
+                  <div class="card-content">
+                  this tsfd  jskfaj asfjafl adfls asfdja asdfalj
+                  </div>
+                  <div class="horizontal layout">
+                    <paper-input name="weight" type="number" label="kilogram"></paper-input>
+                  </div>
+              </div>
+              <div class="card-actions flex-end-justified">
+                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
+                </div>            
+          </section>
+          
+          <section>
+            <paper-toolbar>
+                    <div>Whats your name</div>
+            </paper-toolbar>
+            <div class="card-content">
+                <div class="horizontal layout">
+                  <paper-input name="firstname" label="First Name"></paper-input>
+                  <paper-input name="lastname" label="Last Name"></paper-input>
+                </div>
+            </div>
+            <div class="card-actions flex-end-justified">
+                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
+            </div>          
+          </section>
+
+          <section>
+          <paper-toolbar>
+                    <div>Some of products we recommend</div>
+                </paper-toolbar>
+            
+              <template is="dom-bind" id="conatiner">
+                <iron-ajax auto url="/api/product/all" handle-as="json" last-response="{{productList}}">
+                </iron-ajax>
+                <template is="dom-repeat" items="{{productList}}">
+                  <paper-material elevation="1">
+                    <paper-button raised toggle class="false">[[item.carrierName]]</paper-button>
+                  </paper-material>
+                </template>
+              </template> 
+              <div class="card-actions flex-end-justified">
+                  <paper-fab icon="arrow-forward" title="Next">Next</paper-fab>
+              </div>            
+          </section>
+          <section>
+          <paper-toolbar>
+                    <div>Tradeoff Widget</div>
+          </paper-toolbar>
+            <div class="card-content">
+              <link rel="import" href="/message.html">
+            </div>
+          </section>
+                   
+                
+    </iron-pages>
+    </form>
+    </div>
+  </template>
+
+  
+
+  <!-- build:js scripts/app.js -->
+  <script src="scripts/app.js"></script>
+  <!-- endbuild-->
+  <script type="text/javascript">
+    function submitForm() {
+      document.getElementById('form').submit();
+    }
+    document.addEventListener('click', function(e) {
+      var clicker=e.srcElement.icon;
+      if(clicker == "arrow-forward"){
+        var pages = document.querySelector('iron-pages');
+        pages.selectNext();
+      }
+    });
+  </script>
+    
+
+</body>
+
+</html>
