@@ -3,6 +3,7 @@ package com.talcrafts.service;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -22,18 +23,19 @@ import com.talcrafts.core.util.JsonHelper;
 public class RiskAdvisorService{
 	
     @RequestMapping(value="/form", method = RequestMethod.POST)
-    public String submit(@RequestBody String jsonStr) {
+    public List<Product> submit(@RequestBody String jsonStr) {
+    	List<Product> filteredProductList = new ArrayList<Product>();
     	User userDetails = User.build(AnswerObject.populate(jsonStr));
     	String jsonString;
 		try {
 			jsonString = FileUtils
 					.readFileToString(new File(this.getClass().getResource("/json/product.json").toURI().getPath()));
 			List<Product> allProducts = JsonHelper.jsonArrayStringToJson(jsonString, Product.class);
-			List<Product> filteredProductList = ProductsFilteringService.getFilteredProductList(userDetails, allProducts);
+			filteredProductList.addAll(ProductsFilteringService.getFilteredProductList(userDetails, allProducts));
 		} catch (IOException | URISyntaxException e) {
 			e.printStackTrace();
 		}
-    	return jsonStr;
+    	return filteredProductList;
     }
 
     
