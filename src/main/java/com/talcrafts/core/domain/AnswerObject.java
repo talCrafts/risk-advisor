@@ -11,6 +11,9 @@ public class AnswerObject {
 	private String firstname;
 	private String lastname;
 	private String dob;
+	private Integer heightInInches;
+	private Integer heightInFeet;
+	private Integer weight;
 
 	public String getMale() {
 		return male;
@@ -67,6 +70,30 @@ public class AnswerObject {
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
+	
+	public Integer getHeightInInches() {
+		return heightInInches;
+	}
+
+	public void setHeightInInches(Integer heightInInches) {
+		this.heightInInches = heightInInches;
+	}
+
+	public Integer getHeightInFeet() {
+		return heightInFeet;
+	}
+
+	public void setHeightInFeet(Integer heightInFeet) {
+		this.heightInFeet = heightInFeet;
+	}
+
+	public Integer getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Integer weight) {
+		this.weight = weight;
+	}
 	/*---------------Demographic details -----------------*/
 
 	public static AnswerObject populate(String jsonStr) {
@@ -97,6 +124,15 @@ public class AnswerObject {
 				object.setTobacooyes(split[1]);
 			} else if ("tobacoono".equalsIgnoreCase(split[0])) {
 				object.setTobacoono(split[1]);
+			}
+			else if("heightinches".equalsIgnoreCase(split[0])){
+				object.setHeightInInches(Integer.valueOf(split[1]));
+			}
+			else if("heightfeet".equalsIgnoreCase(split[0])){
+				object.setHeightInFeet(Integer.valueOf(split[1]));
+			}
+			else if("weight".equalsIgnoreCase(split[0])){
+				object.setWeight(Integer.valueOf(split[1]));
 			}
 		}
 		return object;
